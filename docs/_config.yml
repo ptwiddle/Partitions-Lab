@@ -9,8 +9,8 @@
 title: Partitions Lab
 email: paul.johnson@sheffield.ac.uk
 description: Website for an undergraduate research program on partitions
-baseurl: "/Partitions-Lab" # the subpath of your site, e.g. /blog
-url: "https://ptwiddle.github.io" # the base hostname & protocol for your site
+# baseurl: "/Partitions-Lab" # the subpath of your site, e.g. /blog
+url: "https://ptwiddle.github.io/Partitions-Lab" # the base hostname & protocol for your site
 twitter_username: ptwiddle
 github_username:  ptwiddle
 
