@@ -14,4 +14,4 @@ In the second meeting, we slowed down, and I reviewed Euler's Theorem that parti
 
 In the second part I gave a description of Dirac's electron sea, and that charge zero collections of electrons and protons are in bijection with partitions.
 
-[Slides from the second lecture](/LaTeX/SecondMeeting.pdf)
+[Slides from the second lecture]({{ site.base-url }}/LaTeX/SecondMeeting.pdf)****

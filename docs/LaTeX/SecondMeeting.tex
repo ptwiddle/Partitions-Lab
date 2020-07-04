@@ -1,0 +1,219 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usepackage{tikz}
+
+
+%\newtheorem*{theorem*}{Theorem}
+\newtheorem{dummy}{}[section]
+%\newtheorem{theorem}[dummy]{Theorem}
+%\newtheorem{lemma}[dummy]{Lemma}
+%\newtheorem{example}[dummy]{Example}
+%\newtheorem{corollary}[dummy]{Corollary}
+%\newtheorem{definition}[dummy]{Definition}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{question}{Question}
+\newtheorem{conjecture}[dummy]{Conjecture}
+\newtheorem{warning}[dummy]{Warning}
+\newtheorem{exercise}[dummy]{Exercise}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\PP}{\mathcal{P}} % partitions
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\Reg}{\mathbf{G}}
+
+\newcommand{\coleg}{\text{co}\ell}
+
+
+\newcommand{\proj}{\mathbf{P}}
+\newcommand{\core}{\mathbf{core}}
+\newcommand{\quot}{\mathbf{quot}}
+\newcommand{\irreps}{\text{irreps}}
+\newcommand{\Var}{\mathbf{Var}}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Sur}{\mathcal{S}}
+\newcommand{\cores}{\mathcal{C}}
+
+
+\DeclareMathOperator{\dusty}{pdim}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\DC}{DH}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\cdim}{cdim}
+
+
+
+
+\begin{document}
+
+
+\begin{frame}{How I think of partitions: Young Diagrams}
+\begin{tikzpicture}
+\foreach \part [count=\i] in {4}  {
+\draw (\i-1, 0) grid (\i, \part); 
+\node at (\i-.5, -.5) {\part};}
+\begin{scope}[xshift=3cm, yshift=1cm]
+\foreach \part [count=\i] in {3,1}  {
+\draw (\i-1, 0) grid (\i, \part); 
+\node at (\i-.5, -.5) {\part};}
+\end{scope}
+\begin{scope}[xshift=6cm, yshift=2cm]
+\foreach \part [count=\i] in {2,2}  {
+\draw (\i-1, 0) grid (\i, \part); 
+\node at (\i-.5, -.5) {\part};}
+\end{scope}
+\begin{scope}[xshift=2cm, yshift=-2cm]
+\foreach \part [count=\i] in {2,1,1}  {
+\draw (\i-1, 0) grid (\i, \part); 
+\node at (\i-.5, -.5) {\part};}
+\end{scope}
+\begin{scope}[xshift=6cm, yshift=-2cm]
+\foreach \part [count=\i] in {1,1,1,1}  {
+\draw (\i-1, 0) grid (\i, \part); 
+\node at (\i-.5, -.5) {\part};}
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Partitions: lists of numbers}
+A \emph{partition} $\lambda$ is a nondecreasing sequence of positive integers 
+ $$\lambda_1\geq \lambda_2\geq \cdots \geq \lambda_\ell>0$$ 
+
+\begin{block}{My favoured notation}
+\begin{itemize}
+\item Preferred variables: $\lambda, \mu, \nu$
+\item $|\lambda|=\sum \lambda_i$ is the \emph{size}
+    \item The $\lambda_i$ are the \emph{parts}
+    \item $\ell(\lambda)$ the number of parts is the \emph{length}
+    \item $\mathcal{P}$ will denote the set of all partitions
+    \item $\mathcal{P}_n$ will denote the partitions of size $n$
+\end{itemize} 
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{First theorems in Partitions}
+\begin{theorem}[Euler Product]
+$$\sum_{\lambda\in\mathcal{P}} q^{|\lambda|}t^{\ell(\lambda)}=\prod_{m\geq 1} \frac{1}{1-q^mt}$$
+\end{theorem}
+\begin{proof}
+Expand RHS as geometric series; $(q^mt)^k$ means $k$ parts of size $m$.
+\end{proof}
+
+\begin{theorem}{Euler's Odd=Distinct} 
+Let $\mathcal{O}$ be the set of partitions into \emph{odd} parts
+Let $\mathcal{D}$ be the set of partitions into \emph{distinct} parts
+Then $|\mathcal{O}_n|=|\mathcal{D}_n$
+\end{theorem}
+\begin{proof}
+$$\sum_{\lambda\in\mathcal{D}}q^{|\lambda|}=\prod_{m\geq 1} (1+q^m)=\prod_{m\geq 1} \frac{1}{1-q^{2m-1}}=\sum_{\lambda\in\mathcal{O}} q^{|\lambda|}$$
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}{Algebra vs. Bijections}
+
+Euler's theorem is interesting in that it works by algebraic manipulation of power series.  It tells us the two sets $\mathcal{O}_n$ and $\mathcal{D}_n$ have the same number of elements, but it doesn't give us a \emph{bijection} between those two sets.  
+
+\begin{block}{Exercise}
+
+In Igor Pak's survey on partition bijections, he gives three different bijective proofs of Euler's Odd=Distinct:
+
+\begin{itemize}
+\item Sylvester's bijection
+\item Glaisher's bijection
+\item Iterated Dyson maps (This will be important one for us!)
+\end{itemize}
+
+Read his notes to understand how all three work; find more in depth sources for hints / to check yourself.
+\end{block}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Glaisher's theorem}
+%Let $\mathcal{O}$ be the set of partitions with all odd parts
+%Let $\mathcal{D}$ be the set of partitions with distinct parts
+%\begin{theorem}$$\sum_{\lambda\in\mathcal{O}}q^{|\lambda|}=\sum_{\lambda\in\mathcal{D}}q^{|\lambda|}$$
+%\end{theorem}
+%\begin{proof}\begin{align*}
+%\sum_{\lambda\in\mathcal{D}}q^{|\lambda|} = \prod_{m\geq 1} (1+q^m) &= \prod_{m\geq 1} %\frac{(1+q^m)(1-q^m)}{(1-q^m)} \\
+%&=\prod_{m\geq 1} \frac{1-q^{2m}}{1-q^m}\\
+%&=\prod_{m\geq 1} \frac{1}{1-q^{2m-1}}=\sum_{\lambda\in\mathcal{O}} q^{|\lambda|}
+%\end{align*}
+
+%\end{proof}
+%\end{frame}
+%\begin{frame}{Slightly more general}
+\begin{itemize}
+    \item $\mathcal{R}(k)$ denotes partitions with no part repeated $k$ times or more
+    \item $\mathcal{D}(k)$ is the set of partitions with no part divisible by $k$
+\end{itemize}
+\begin{theorem}[Glaisher]
+$$\sum_{\lambda\in\mathcal{R}(k)}q^{|\lambda|}=\sum_{\lambda\in\mathcal{D}(k)}q^{|\lambda|}$$
+\end{theorem}
+\begin{proof}$$(1+q^m+q^{2m}+\cdots q^{(k-1)m})(1-q^m)=1-q^{km}$$
+\end{proof}
+\begin{itemize}
+\item When $k=2$ this is Euler's theorem that "Odd=Distinct"
+\item But only Glaisher's bijection known to adapt?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Start of "Fermionic" P.O.V.: Partitions in a box}
+\begin{block}{How many partitions fit inside an $a\times b$ box?}
+\begin{tikzpicture}
+\draw [thin, gray] (0,0) grid (5,3);
+\end{tikzpicture}
+
+Partitions $\leftrightarrow$ lattice paths $\leftrightarrow$ binary sequences $\leftrightarrow$ binary sequences
+\end{block}
+
+\begin{block}{Now keep track of their size...}
+\end{block}
+
+\begin{block}{Now keep track of their size...}
+\end{block}
+\end{frame}{Setting $q=1$ gives back all the usual formulas.} 
+$$[n]_q=\frac{1-q^n}{1-q}=1+q+q^2+\cdots + q^{n-1}$$ $$[n]_q!=\prod_{k=1}^n [k]_q$$
+$$\binom{n}{k}_q=\frac{[n]_q!}{[k]_q![n-k]_q!}$$
+
+
+\begin{theorem}[Exercise!]
+Let $\mathcal{P}(a\times b)$ denote the set of partitions inside an $a\times b$ box.  
+$$\sum_{\lambda\in\PP(a\times b)}q^{|\lambda|}=\binom{a+b}{a}_q$$
+\end{theorem}
+\begin{proof}Both sides satisfy a $q$-analog of Pascal's triangle. Induct.\end{proof} \begin{frame}{Setting $q=1$ gives back all the usual formulas.} 
+$$[n]_q=\frac{1-q^n}{1-q}=1+q+q^2+\cdots + q^{n-1}$$ $$[n]_q!=\prod_{k=1}^n [k]_q$$
+$$\binom{n}{k}_q=\frac{[n]_q!}{[k]_q![n-k]_q!}$$
+
+
+\begin{theorem}[Exercise!]
+Let $\mathcal{P}(a\times b)$ denote the set of partitions inside an $a\times b$ box.  
+$$\sum_{\lambda\in\PP(a\times b)}q^{|\lambda|}=\binom{a+b}{a}_q$$
+\end{theorem}
+\begin{proof}Both sides satisfy a $q$-analog of Pascal's triangle. Induct.\end{proof} 
+\end{frame}
+
+
+
+
+\end{document}

@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{hyperref}
+\theoremstyle{definition}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{dummy}{}[section]
+\newtheorem{theorem}[dummy]{Theorem}
+\newtheorem{lemma}[dummy]{Lemma}
+\newtheorem{example}[dummy]{Example}
+\newtheorem{corollary}[dummy]{Corollary}
+\newtheorem{definition}[dummy]{Definition}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{question}{Question}
+\newtheorem{conjecture}[dummy]{Conjecture}
+\newtheorem{OpenProblem}{Open Problem}
+\newtheorem{exercise}{Exercise}
+
+% set font encoding for PDFLaTeX, XeLaTeX, or LuaTeX
+\usepackage{ifxetex,ifluatex}
+\if\ifxetex T\else\ifluatex T\else F\fi\fi T%
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+\usepackage{hyperref}
+
+\title{Exercises from Meeting Two}
+\author{Paul Johnson}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% http://doc.sagemath.org/html/en/tutorial/sagetex.html
+% \usepackage{sagetex}
+
+% Enable PythonTeX to run Python – https://ctan.org/pkg/pythontex
+% \usepackage{pythontex}
+
+\begin{document}
+\maketitle
+
+\section{Warm-up to an open question}
+Remember that for a cell $\square\in\lambda$ of a partition $\lambda$, we defined 
+
+
+\section{Bijective proofs of Euler's Theorem}
+The first Theorem of partitions, and illustration of the power of generating functions, is Euler's theorem that the number of partitions of $n$ into odd parts are equal to the number of partitions of $n$ into distinct parts.  
+
+Though very elegant, Euler's Theorem could be improved in that it's not "bijective" -- we prove that two finite sets have the same size, but we don't give a bijection between those.  
+
+I know of three different bijective proofs of Euler's Theorem (learned from \href{https://www.math.ucla.edu/~pak/papers/psurvey.pdf}{Igor Pak's survey of partition bijections}); the discussion of these bijections begins in Section 3.1 on Page 20. Read Pak's terse descriptions of them and decipher how they work.
+\begin{enumerate}
+\item Glaisher's bijection uses binary
+\item Sylvester's bijection cuts up a partition of one type and reassembles it into another
+\item The "Iterated Dyson's Map" 
+\end{enumerate}
+Dyson's map $\psi_r$ is defined in Section 2.5.1 of Pak's notes, on page 15.
+
+
+
+\section{Glaisher's Theorem}
+Recall \emph{Glaisher's Theorem}, a generelization of Euler's Theorem that "Odd=Distinct".
+Let $\mathcal{R}(k)$ (the $\mathcal{R}$ is for 'repeat') denote the set of partitions where no part occurs $k$ times or more. Hence $\mathcal{R}(1)$ consists only of the empty partition, and $\mathcal{R}(2)$ consists of partitions with distinct parts.
+
+ Let $\mathcal{D}(k)$ (the $\mathcal{D}$ is for 'divisible') denote the set of partitions with no part divisible by $k$; hence $\mathcal{D}(1)$ again consists only of the empty partition, and $\mathcal{D}(2)$ consists of partitions with odd parts.  
+ 
+ Then we have 
+ \begin{theorem}[Glaisher]
+$$\sum_{\lambda\in\mathcal{R}(k)}q^{|\lambda|}=\sum_{\lambda\in\mathcal{D}(k)}q^{|\lambda|}$$
+and so the $k=2$ case recovers Euler's Theorem that Odd=Distinct.
+
+\subsection{Easy, do me}
+Write out a careful proof of Glaisher's Theorem by adapting the generating function proof of Euler's Theorem. First find a product formula for the generating functions of partitions in $\mathcal{R}(k)$ and $\mathcal{D}(k)$, and show these different looking formulas are actually the same using 
+$$(1-q^m)(1+q^m+q^{2m}+\cdots+q^{(k-1)m})=1-q^{km}$$
+\subsection{A little harder}
+Now find a \emph{bijective} proof of Glaisher's theorem, by adapting Glaisher's bijective proof of Euler's Theorem.  Briefly, if $\lambda\in \mathcal{D}(k)$, and the part of size $m$ occurs $a$ times, then write $a$ in base $k$:
+$$a=a_\ell k^\ell+a_{\ell-1} k^{\ell-1}+\codts a_1 k +a_0$$
+with $0\leq a_i<k$.  Then to get a partition in $\mathcal{R}(k)$ we convert the $a$ parts of size $m$ into $a_\ell$ parts of size $k^\ell m$, $a_{\ell-1}$ parts of size $k^{\ell-1}m$, etc. until $a_1$ parts of size $km$ and $a_0$ parts of size $m$.
+
+\section{$q$-binomial coefficients}
+
+Let $\mathcal{P}(a\times b)$ be the set of partitions that fit inside an $a\times b$.   We proved by looking at the boundary path that $|\mathcal{P}(a\times b)|=\binom{a+b}{a}$.  However, we'd like to be able to count them with respect to their size.  I asked you to prove that
+
+$$\sum_{\lambda\in\mathcal{P}(a\times b)} q^{|\lambda|}=\binom{a+b}{a}_q$$
+
+where the right hand side is what we get if we take the formula for binomial coefficients and replace everything with their $q$-numbers:
+
+$$[n]_q=\frac{1-q^n}{1-q}=1+q+\cdots+q^{n-1}$$
+$$[n]_q!=[n]_q[n-1]_q[n-2]_q\cdots [2]_q[1]_q$$
+$$\binom{n}{k}_q=\frac{[n]_q!}{[k]_q![n-k]_q!}$$
+
+The method was to show that both $\binom{a+b}{a}_q$ and $\sum_{\lambda\in\mathcal{P}(a\times b)} q^{|\lambda|}$ satisfy the same $q$-analog of the identity of Pascal's triangle.  To derive this for the sum of partitions, consider the first step of the boundary path -- either it goes down, in which case the partition actually fits in an $(a-1)\times b$ box after that, or it goes to the right, in which case the first column of the partition has $a$ boxes in it, and everything after that fits in an $a\times (b-1)$ box.  To see the same identity holds for $\binom{a+b}{a}_q$ is an algebraic manipulation.
+
+
+\section{The Jacobi Triple Product formula}
+The Jacobi triple product formula states that
+$$\prod_{m\geq 1} (1-x^{2m})(1+x^{2m-1}y^2)(1+x^{2m-1}y^{-2})=\sum_{n\in\mathbb{Z}}x^{n^2}y^{2n}$$
+It's called the triple product formula because the infinite product has three terms in it.
+
+\subsection{A specialization, easy}
+Show that if we specialize $x=q^{3/2}, y^2=q^{1/2}$, the the Jacobi Triple Product formula becomes Euler's Pentagonal Number Theorem (covered at the end of Haiman's notes, for instance):
+
+$$\prod_{m\geq 1} (1-q^m)=\sum_{n\in\Z}(-1)^n q^{\frac{3n^2-n}{2}}$$
+
+The original proofs of the Jacobi triple product formula used some analysis and depended on the Euler Pentagonal Number Theorem.
+\subsection{Borcherd's proof of the Jacobi Triple Product Formula}
+A very illuminating proof of the Jacobi Triple Product Formula uses Dirac's Electron Sea.
+
+Let a state $S$ consist of a finite number of electrons and a finite number of positrons, and let $\mathcal{S}$ denote the set of all possible states.  (Recall electrons have charge -1, positrons have charge +1, their energy can be any number of the form $k-1/2, k\in\Z, k>0$, and we can have at most one electron/positron of any given energy in a state).  
+
+The energy $e(S)$ and charge $c(S)$ are the sums of the energies and charges of the electrons and positrons in the state.  So, for example, if the sate $S$ consisted of three electrons with energies 11/2, 7/2, and 1/2, and one positron with energy 9/2, then it would have $c(S)=-2$, and $e(S)=28/2=14$.
+
+We will prove the Jacobi Triple product by computing the generating function
+$$F(q,t)=\sum_{S\in\mathcal{S}}q^{e(s)}t^{c(S)}$$
+in two different ways.
+
+First, working "energy level by energy level", show
+$$F(q,t)=\prod_{m\geq 1} (1+q^{m-1/2}t)(1+q^{m-1/2}t^{-1})$$
+
+Second, we can work "charge by charge" -- for any charge $c$, show:
+
+\begin{itemize}
+\item There is unique state $\textrm{vac}_c$ (The "vacuum of charge $c$") with minimal energy among all states with charge $c$
+\item That energy is $e(\textrm{vac}_c))=c^2/2$
+\item There is a bijection between partitions and states of charge $c$, that sends a partition $\lambda$ with $|\lambda|=n$ to a state $S$ with energy $c^2/2+n$
+\end{itemize}
+
+Deduce:
+$$F(q,t)=\sum_{n\in\mathbb{Z}}t^{n}q^{n^2/2}\prod_{m\geq 1}\frac{1}{1-q^m}$$
+
+Finally, prove the Jacobi Triple Product formula by setting the two expressions for $F(q,t)$ equal and doing some algebraic manipulations.
+
+\end{document}
