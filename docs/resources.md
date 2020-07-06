@@ -37,6 +37,5 @@ Meeting Records
 ---
 1. [Slides](/Partitions-Lab/LaTeX/SecondMeeting.pdf) and [Video](https://eu-lti.bbcollab.com/recording/68fb53850aaa4dbbaf0715e1b0233cff) on Euler, Glaisher, and partitions in a box 
 2. [Video](https://eu-lti.bbcollab.com/recording/079b842754b74a07a1e0f6ec9b7b20f6) of a first look at Dirac's Electron Sea
-
-
+3. [Slides](/Partitions-Lab/LaTeX/ThirdMeeting.pdf) and [Video](https://eu-lti.bbcollab.com/recording/1ec836689655464881395d23344bbc92) of the third meeting: hooks and cells in Fermionic viewpoint; start of abacus.
 

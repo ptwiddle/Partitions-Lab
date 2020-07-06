@@ -1,0 +1,282 @@
+\documentclass{beamer}
+\beamertemplatenavigationsymbolsempty
+\usepackage{tikz}
+
+
+%\newtheorem*{theorem*}{Theorem}
+\newtheorem{dummy}{}[section]
+%\newtheorem{theorem}[dummy]{Theorem}
+%\newtheorem{lemma}[dummy]{Lemma}
+%\newtheorem{example}[dummy]{Example}
+%\newtheorem{corollary}[dummy]{Corollary}
+%\newtheorem{definition}[dummy]{Definition}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{question}{Question}
+\newtheorem{conjecture}[dummy]{Conjecture}
+\newtheorem{warning}[dummy]{Warning}
+\newtheorem{exercise}[dummy]{Exercise}
+
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\LL}{\mathbf{L}}
+\newcommand{\PP}{\mathcal{P}} % partitions
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\Reg}{\mathbf{G}}
+
+\newcommand{\coleg}{\text{co}\ell}
+
+
+\newcommand{\proj}{\mathbf{P}}
+\newcommand{\core}{\mathbf{core}}
+\newcommand{\quot}{\mathbf{quot}}
+\newcommand{\irreps}{\text{irreps}}
+\newcommand{\Var}{\mathbf{Var}}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Sur}{\mathcal{S}}
+\newcommand{\cores}{\mathcal{C}}
+
+
+\DeclareMathOperator{\dusty}{pdim}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\DC}{DH}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\cdim}{cdim}
+
+
+
+
+\begin{document}
+
+
+\begin{frame}{Dirac's Electron Sea}
+
+\begin{itemize}
+\item Energy levels of electrons are $\Z+1/2$, e.g. 1/2, -7/2, 101/2.
+\item Each energy level is either filled or empty
+\item Vacuum is when every negative energy state is filled, no positive levels filled
+\item A missing negative energy state corresponds to a positron with that energy
+\item A \emph{state} is finite number of electrons and positrons
+\end{itemize}
+\begin{block}{Visualize states as \emph{Maya Diagrams}}
+\begin{center}
+\begin{tikzpicture}[scale=.7]
+\begin{scope}[yshift=2cm]
+
+\draw (0,-.5) to (0,.5);
+\draw (-5.5,0) node{$\cdots$};
+\draw (-4.5,0) circle (.3) node[below=3pt]{$\frac{9}{2}$};
+\draw (-3.5,0) circle (.3) node[below=3pt]{$\frac{7}{2}$};
+\draw (-2.5,0) circle (.3) node[below=3pt]{$\frac{5}{2}$};
+\draw (-1.5,0) circle (.3) node[below=3pt]{$\frac{3}{2}$};
+\draw (-.5,0) circle (.3) node[below=3pt]{$\frac{1}{2}$};
+\filldraw (.5,0) circle (.3) node[below=3pt]{$\frac{-1}{2}$};
+\filldraw (1.5,0) circle (.3) node[below=3pt]{$\frac{-3}{2}$};
+\filldraw (2.5,0) circle (.3) node[below=3pt]{$\frac{-5}{2}$};
+\filldraw (3.5,0) circle (.3) node[below=3pt]{$\frac{-7}{2}$};
+\filldraw (4.5,0) circle (.3) node[below=3pt]{$\frac{-9}{2}$};
+\draw (5.5,0) node{$\cdots$};
+\end{scope}
+
+\draw (0,-.5) to (0,.5);
+\draw (-5.5,0) node{$\cdots$};
+\draw (-4.5,0) circle (.3) node[below=3pt]{$\frac{9}{2}$};
+\filldraw (-3.5,0) circle (.3) node[below=3pt]{$\frac{7}{2}$};
+\filldraw (-2.5,0) circle (.3) node[below=3pt]{$\frac{5}{2}$};
+\filldraw (-1.5,0) circle (.3) node[below=3pt]{$\frac{3}{2}$};
+\draw (-.5,0) circle (.3) node[below=3pt]{$\frac{1}{2}$};
+\draw (.5,0) circle (.3) node[below=3pt]{$\frac{-1}{2}$};
+\filldraw (1.5,0) circle (.3) node[below=3pt]{$\frac{-3}{2}$};
+\draw (2.5,0) circle (.3) node[below=3pt]{$\frac{-5}{2}$};
+\filldraw (3.5,0) circle (.3) node[below=3pt]{$\frac{-7}{2}$};
+\filldraw (4.5,0) circle (.3) node[below=3pt]{$\frac{-9}{2}$};
+\draw (5.5,0) node{$\cdots$};
+\end{tikzpicture}
+\end{center}
+\end{block}
+\end{frame}
+
+\begin{frame}{Charge 0, energy $n$ states $\stackrel{1:1}{\longleftrightarrow}$ partition of $n$}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[gray, very thin, scale=.6]
+   \clip (-8.5, 8.5) rectangle (8.5, -1);
+   \draw[rotate=45, scale=1.412, thin, gray, dashed] (0,0) grid (10,10);
+\end{scope}
+\begin{scope}[scale=.6, yshift=-.5cm]
+   \draw (-8.5,0) node{$\cdots$};
+     \draw (-7.5,0) circle (.3);
+
+ \draw (-6.5,0) circle (.3);
+   \draw (-5.5,0) circle (.3);
+
+ \draw (-4.5,0) circle (.3);
+   \draw (-3.5,0) circle (.3);
+   \draw (-2.5,0) circle (.3);
+   \draw (-1.5,0) circle (.3);
+   \draw (-.5,0) circle (.3);
+   \draw (.5,0) circle (.3);
+   \draw (1.5,0) circle (.3);
+   \draw (2.5,0) circle (.3);
+   \draw (3.5,0) circle (.3);
+   \draw (4.5,0) circle (.3);
+   \draw (5.5,0) circle (.3);
+   \draw (6.5,0) circle (.3);
+    \draw (7.5,0) circle (.3);
+
+\draw (8.5,0) node{$\cdots$};
+  \end{scope}
+
+\begin{scope}[scale=.6]
+\foreach \x in {.5, 1.5,...,6.5,7.5} {
+\draw[thin, dotted, gray] (\x,0) -- (\x, \x);
+\draw[thin, dotted, gray] (-\x,0) -- (-\x, \x); };
+
+\end{scope}
+
+\end{tikzpicture}
+
+
+\end{center}
+
+
+
+\end{frame}
+
+\begin{frame}{Cells, hooks, arms and legs in fermionic viewpoint?}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[gray, very thin, scale=.6]
+   \clip (-8.5, 8.5) rectangle (8.5, -1);
+   \draw[rotate=45, scale=1.412, thin, gray, dashed] (0,0) grid (10,10);
+\end{scope}
+\begin{scope}[scale=.6, yshift=-.5cm]
+   \draw (-8.5,0) node{$\cdots$};
+     \draw (-7.5,0) circle (.3);
+
+ \draw (-6.5,0) circle (.3);
+   \draw (-5.5,0) circle (.3);
+
+ \draw (-4.5,0) circle (.3);
+   \draw (-3.5,0) circle (.3);
+   \draw (-2.5,0) circle (.3);
+   \draw (-1.5,0) circle (.3);
+   \draw (-.5,0) circle (.3);
+   \draw (.5,0) circle (.3);
+   \draw (1.5,0) circle (.3);
+   \draw (2.5,0) circle (.3);
+   \draw (3.5,0) circle (.3);
+   \draw (4.5,0) circle (.3);
+   \draw (5.5,0) circle (.3);
+   \draw (6.5,0) circle (.3);
+    \draw (7.5,0) circle (.3);
+
+\draw (8.5,0) node{$\cdots$};
+  \end{scope}
+
+\begin{scope}[scale=.6]
+\foreach \x in {.5, 1.5,...,6.5,7.5} {
+\draw[thin, dotted, gray] (\x,0) -- (\x, \x);
+\draw[thin, dotted, gray] (-\x,0) -- (-\x, \x); };
+
+\end{scope}
+
+\end{tikzpicture}
+
+
+\end{center}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Cells, hooks, arms, and legs in fermionic viewpoint!}
+\begin{itemize}
+\item A cell $\square\in\lambda$ is determined by its hand and foot.
+\item  Given an $E$ in boundary that appears before an $S$ in boundary path, there's a cell that has that $E$ as its hand, and that $S$ as its foot. Such a pair $(E,S)$ is called an \emph{inversion}
+\item In fermionic viewpoint, an inversion is a pair of energy levels $e_1>e_2$, with $e_1$ filled, and $e_2$ empty. 
+\item Moving the electron with energy $e_1$ to $e_2$ corresponds to removing the rim hook of $\square$ so $h(\square)=e_1-e_2$
+\item $a(\square)$ is the number of empty states between $e_1$ and $e_2$
+\item $\ell(\square)$ is the number of filled states between $e_1$ and $e_2$
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Abacus}
+To analyze hook length divisible by $k$, spread the electrons over $k$ runners:
+
+
+
+
+\begin{tikzpicture}
+   \begin{scope}[gray, very thin, scale=.4]
+      \clip (-11.5, 11.5) rectangle (11.5, -1);
+      \draw[rotate=45, scale=1.412, gray!20!white, fill] (0,0)--(0,10)--(1,10)--(1,8)--(3,8)--(3,4)--(5,4)--(5,3)--(6,3)--(6,1)--(8,1)--(8,0)--cycle;
+      \begin{scope}[rotate=45, scale=1.412, black!50!green] 
+         \draw (.5,6.5)node{$\spadesuit$};
+         \draw (1.5,6.5)node{$\spadesuit$};
+      \end{scope}
+
+      \begin{scope}[rotate=45, scale=1.412, blue] 
+         \draw (2.5,5.5)node{$\clubsuit$};
+         \draw (2.5,2.5)node{$\clubsuit$};
+         \draw (4.5,2.5)node{$\clubsuit$};
+      \end{scope}
+
+
+      \draw[rotate=45, scale=1.412] (0,0) grid (12,12);
+   \end{scope}
+
+   \begin{scope}[rotate=45, ultra thick, scale=.4*1.412]
+      \begin{scope}[blue]
+         \draw (1,9.5) node{$0$};
+         \draw (2.5,8)node{$0$};
+         \draw (3,5.5)node{$0$};
+         \draw (4.5,4)node{$0$};
+         \draw (6,2.5)node{$0$};
+         \draw (7.5,1)node{$0$};
+         \draw (9.5,0)node{$0$};
+      \end{scope}
+
+      \begin{scope}[red]
+         \draw (0,10.5)node{$1$};
+         \draw (1,8.5)node{$1$};
+         \draw (3,7.5)node{$1$};
+         \draw (3,4.5)node{$1$};
+         \draw (5,3.5)node{$1$};
+         \draw (6,1.5)node{$1$};
+         \draw (8,.5)node{$1$};
+         \draw (10.5,0)node{$1$};
+      \end{scope}
+
+      \begin{scope}[black!50!green]
+         \draw (.5,10)node{$2$};
+         \draw (1.5, 8)node{$2$};
+         \draw (3,6.5)node{$2$};
+         \draw (3.5,4)node{$2$};
+         \draw (5.5,3)node{$2$};
+         \draw (6.5,1)node{$2$};
+         \draw (8.5,0)node{$2$};
+      \end{scope}
+
+   \end{scope}
+
+\end{tikzpicture}
+
+
+\end{frame}
+\end{document}
