@@ -26,7 +26,7 @@ Written by me:
 
 1. [Review Exercises Generating Function Basics](/Partitions-Lab/LaTeX/GeneratingFunctionsBasicExercises.pdf)
 2. [Exercises/Questions from First Meeting](/Partitions-Lab/LaTeX/Introduction.pdf)
-3. [Exercises from Second Meeting](/Partitions-Lab/LaTeX/)
+3. [Exercises from Second Meeting](/Partitions-Lab/LaTeX/SecondMeeting.pdf)
 
 Written by others
 ===
