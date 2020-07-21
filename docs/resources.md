@@ -41,3 +41,5 @@ Meeting Records
 4. [Video](https://eu-lti.bbcollab.com/recording/ed419f35e89a48699fc93ab1f0a2f253) from our meeting discussing the partitions generating function worksheet
 5. [Video](https://eu-lti.bbcollab.com/recording/1360b8c8ca9a4fba81f780fd240fdb3c) with some messy preliminary thinking aloud about what (2,5) core partitions look like
 6. [Video](https://eu-lti.bbcollab.com/recording/6d147bb2132c4716ab64d593a1ab50d0) Building (2,5)-cores for every $n$ that look like triangles.
+7. [Video](https://eu-lti.bbcollab.com/recording/1c808ae4067447dfb711d401b13477ef) about cores and quotients, sketching proofs that the $t$-core is well defined, that the generating function for $t$-cores has a nice product formula, and that $t$-cores have a shape with $t-1$ different slopes
+8. [Video](https://eu-lti.bbcollab.com/recording/5b5d662d95a94609ab4e19661bc2f4d9) Brief introduction to iterated Dyson maps

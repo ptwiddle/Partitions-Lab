@@ -30,3 +30,8 @@ Number theorists, they use the result about quadratic forms to give a unified co
 
 [Instantons on ALE spaces and orbifold partitions, by Robbert Dijkgraaf, Piotr Sułkowski](https://arxiv.org/abs/0712.1427) 
 Seemingly independently they prove the size of a core partition is given by a quadratic form.  Their "orbifold partition of the first type" correspond to the coloured box-counting partition but then setting all variables except one to 1; it would be interesting to see if their "orbifold partition of the second type" have any interesting patterns for other coloring schemes.
+
+Dyson, rank and map:
+=====
+
+[Igor Pak's bibliography](https://www.math.ucla.edu/~pak/papers/dyson.htm) contains, for instance, jpg's to Dyson's paper where he defines the rank and conjectures the existence of the "crank".  [Dyson's original paper](https://www.sciencedirect.com/science/article/pii/0097316589900435) where he essentially defines the map could be interesting to read, as he defines it very different terms than I or
