@@ -27,7 +27,7 @@ Written by me:
 1. [Review Exercises Generating Function Basics](/Partitions-Lab/LaTeX/GeneratingFunctionsBasicExercises.pdf)
 2. [Exercises/Questions from First Meeting](/Partitions-Lab/LaTeX/Introduction.pdf)
 3. [Exercises from Second Meeting](/Partitions-Lab/LaTeX/SecondMeeting.pdf)
-4. [Exercises deriving generating functions for $(-1,n)$-cores from Iterated Dyson maps](/Partitions-Lab-/LaTeX/TwoCoreExercises.pdf)
+4. [Exercises deriving generating functions for $(-1,n)$-cores from Iterated Dyson maps](/Partitions-Lab/LaTeX/TwoCoresExercises.pdf)
 
 
 Written by others
