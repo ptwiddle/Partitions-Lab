@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{hyperref}
+\theoremstyle{definition}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{dummy}{}[section]
+\newtheorem{theorem}[dummy]{Theorem}
+\newtheorem{lemma}[dummy]{Lemma}
+\newtheorem{example}[dummy]{Example}
+\newtheorem{corollary}[dummy]{Corollary}
+\newtheorem{definition}[dummy]{Definition}
+\newtheorem{remark}[dummy]{Remark}
+\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{observation}{Observation}
+\newtheorem{question}{Question}
+\newtheorem{conjecture}[dummy]{Conjecture}
+\newtheorem{OpenProblem}{Open Problem}
+\newtheorem{exercise}{Exercise}
+
+% set font encoding for PDFLaTeX, XeLaTeX, or LuaTeX
+\usepackage{ifxetex,ifluatex}
+\if\ifxetex T\else\ifluatex T\else F\fi\fi T%
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+\usepackage{hyperref}
+% set font encoding for PDFLaTeX, XeLaTeX, or LuaTeX
+\usepackage{ifxetex,ifluatex}
+\if\ifxetex T\else\ifluatex T\else F\fi\fi T%
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+
+
+\title{(-1,n)-cores, two cores, checkboard colouring, partitions with distinct parts}
+
+% Enable SageTeX to run SageMath code right inside this LaTeX file.
+% http://doc.sagemath.org/html/en/tutorial/sagetex.html
+% \usepackage{sagetex}
+
+% Enable PythonTeX to run Python – https://ctan.org/pkg/pythontex
+% \usepackage{pythontex}
+
+\begin{document}
+\maketitle
+
+
+\section{Application of Iterated Dyson: Generating Function for (-1,n)-cores}
+
+Recall that the rank rk of a partition is the largest part minus the number of parts (up to a sign I may be screwing up), and we introduced it in discussion of iterated Dyson maps.
+
+This first one I know is "morally right" but I wrote it up quickly without checking details, so there might be something wrong as written; it wasn't part of our discussion on the 22nd but is a good one to do.
+
+\begin{exercise}
+Let $n$ be odd.  Show that $\lambda$ is a $(-1,n)$-core if and only if $\lambda$ has distinct parts and $\textrm{rk}(\lambda)<n-1$.  
+\end{exercise}
+
+\begin{question}
+Is there a similar criterion for $(-1,n)$-cores if $n$ is even?  (I think there probably is, I just haven't thought about it).  
+\end{question}
+
+More generally, it feels like $(1,n)$ cores and $(-1,n)$ cores have slightly simpler ways to see them that their definitions; is there something similar for general $(k,n)$-cores?
+
+
+Now, the first exercise together with iterated Dyson maps allows to find a generating function for $(-1,n)$ cores when $n$ is odd:
+
+\begin{exercise}
+If $n=2k+1$ is odd, prove that
+$$\sum_{\lambda \textrm{(-1,n)-core}} q^{|\lambda|}=\prod_{m=1}^k \frac{1}{1-q^{2m-1}}$$
+\end{exercise}
+
+As a hint, another way to state this approach is taht if we restrict the iterated Dyson bijection between partitions with odd parts and those with distinct parts and to odd parts of size less than $(2n+1)$, then we get exactly (-1,2n+1)-cores.
+
+\section{Recalling the generating function for triangular numbers}
+Earlier we showed that the 2-core partitions are exactly the staircase partitions, and hence we can write their generating function as:
+
+$$\sum_{\lambda \textrm{ two-core}}q^{|\lambda|}= \sum_{n\geq 1} q^{n(n+1)/2}$$
+
+Using the 2-abacus, we found the following expression for the generating function for two cores
+$$\sum_{\lambda \textrm{ two-core}}q^{|\lambda|}=\prod_{n\geq 1} \frac{(1-q^{2m})^2}{(1-q^m)}$$
+
+and hence equating these two formulas, we obtain a product formula for the generating function for triangular numbers.  Using difference of two squares factorizations, these product formula can be written in several different ways.
+
+In these two exercises we first give another derivation of an enrichment of these product formulas using the Jacobi Triple Product Formula, and then explain how to use that formula to give a generating function for partitions with distinct parts and a checkerboard colouring.
+
+
+\section{Triple Product Formula and checkerboards}
+
+The right hand side looks similar to one side of the Jacobi Triple Product formula (written in the form that naturally occurs from deriving it using Dirca's Electron Sea)
+
+$$\sum_{n\in\mathbb{Z}} q^{n^2/2}t^n=\prod_{m\geq 1}(1+tq^{m-1/2})(1+t^{-1}q^{m-1/2})(1-q^m)$$
+
+However, the sum we have for two cores is only over positive $n$, while the sum we have is over all of $\mathbb{Z}$.  We explain first how to fix this problem while improving it.
+
+Colour all the squares in the plain in a checkboard pattern alternating white black white black, with white in the corner.  Then, given a partition $\lambda$, rather than just consider its size $|\lambda|$, which is the total number of boxes in $\lambda$, we can count the number of white and black boxes it has individually.  Let $|\lambda|_0$ be the number of white boxes, and $|\lambda|_1$ denote the number of black boxes.  Hence if $\lambda$ is the partition of 1, we have $|\lambda|_0=1, |\lambda|_1=0$, and if $\mu$ is the partition $2+1$, we have $|\mu|_0=1, |\mu|_1=2$.
+
+Now, consider as before the generating function for two cores partitions, but now instead of counting them with weight $q^{|\lambda|}$, lets use two variables, $q_0$ keeping track of the number of white boxes, and $q_1$ keeping track of the number of black boxes, i.e.
+
+$$\sum_{\lambda \textrm{ two-core}}q_0^{|\lambda|_0}q_1^{|\lambda|_1}=1+q_0+q_0q_1^2+q_0^4q_1^2+q_0^4q_1^6+q_0^9q_1^6+\cdots$$
+
+Note that half the terms, corresponding to when the largest diagonal of the staircase is white, will have $q_0$ with a higher power, and half the terms, corresponding to when the largest diagonal of the staircase is black, will have $q_1$ to a higher power. Treating these terms roughly as when $n$ positive and $n$ negative (you need $n=0$ somewhere) you can show:
+
+\begin{exercise}
+$$\sum_{\lambda \textrm{ two-core}}q_0^{|\lambda|_0}q_1^{|\lambda|_1}=\sum_{n\in\mathbb{Z}} (q_0q_1)^{n^2}q_1^n$$
+\end{exercise}
+
+\begin{exercise}
+Apply Jacobi triple product formula to a product formula for this generating function.\end{exercise}
+
+\begin{exercise}
+Finally, observing that every two boundary strip is a domino and hence contains one black square and one quite square, use the 2-abacus construction to deduce a product formula for the generating function for \emph{all} partitions counted with a checkerboard colouring, i.e.:
+$$\sum_\lambda q_0^{|\lambda|_0}q_1^{|\lambda|_1}$$
+\end{exercise}
+
+\subsection{Checkboard colorings and partitions with distinct parts}
+
+In using the Iterated Dyson map to get a bijection for Euler's formula we proved that first that all partitions $\lambda$ with distinct parts had rank $\textrm{rk}(\lambda)\geq 0$, and then we iteratively took away the largest odd number of boxes we could using Dyson's map -- i.e., we removed the largest odd number less than $\textrm{rk}(\lambda)+1$.
+
+What if instead we took away the largest \emph{even} number of boxes we could using Dyson's map?  A first observation is we might not be able to reach the empty partition -- if $\textrm{rk}(\lambda)=0$, then we can't take away any boxes.  
+
+\begin{exercise}
+Show that the only partitions $\lambda$ with distinct parts and $\textrm{rk}(\lambda)=0$ are the staircase partitions.  Deduce that for any two-core $\mu$, the generating function for partitions with distinct parts and two-core $\mu$ is
+
+$$q^{|\mu|}\prod_{m\geq 1}\frac{1}{(1-q^{2m})}$$
+\end{exercise}
+
+
+Observe that if we use Dyson's map to add an even number of boxes, we add an equal number of white and black boxes.  Using this and the generating function for two-cores we found in the first section, derive a product formula for
+
+$$\sum_{\lambda \textrm{ distinct}} q_0^{|\lambda|_0}q_1^{|\lambda|_1}$$
+
+
+
+
+
+\end{document}

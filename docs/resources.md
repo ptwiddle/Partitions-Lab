@@ -27,6 +27,8 @@ Written by me:
 1. [Review Exercises Generating Function Basics](/Partitions-Lab/LaTeX/GeneratingFunctionsBasicExercises.pdf)
 2. [Exercises/Questions from First Meeting](/Partitions-Lab/LaTeX/Introduction.pdf)
 3. [Exercises from Second Meeting](/Partitions-Lab/LaTeX/SecondMeeting.pdf)
+4. [Exercises deriving generating functions for $(-1,n)$-cores from Iterated Dyson maps](/Partitions-Lab-/LaTeX/TwoCoreExercises.pdf)
+
 
 Written by others
 ===
@@ -43,3 +45,4 @@ Meeting Records
 6. [Video](https://eu-lti.bbcollab.com/recording/6d147bb2132c4716ab64d593a1ab50d0) Building (2,5)-cores for every $n$ that look like triangles.
 7. [Video](https://eu-lti.bbcollab.com/recording/1c808ae4067447dfb711d401b13477ef) about cores and quotients, sketching proofs that the $t$-core is well defined, that the generating function for $t$-cores has a nice product formula, and that $t$-cores have a shape with $t-1$ different slopes
 8. [Video](https://eu-lti.bbcollab.com/recording/5b5d662d95a94609ab4e19661bc2f4d9) Brief introduction to iterated Dyson maps
+9. [Notes](/Partitions-Lab/LaTeX/MeetingNotesWed22.pdf) from the meeting on Wednesday July 22nd; Generating function for (2,4)-cores, $(k,n)$-cores are "convex"
