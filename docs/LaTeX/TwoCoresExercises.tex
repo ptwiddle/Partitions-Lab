@@ -1,6 +1,11 @@
 \documentclass{article}
 \usepackage{amsthm, amsmath, amssymb}
 \usepackage{hyperref}
+\usepackage[normalem]{ulem} %for \sout strike out text
+\usepackage{xcolor}
+
+
+
 \theoremstyle{definition}
 
 \newcommand{\Z}{\mathbb{Z}}
@@ -19,6 +24,7 @@
 \newtheorem{conjecture}[dummy]{Conjecture}
 \newtheorem{OpenProblem}{Open Problem}
 \newtheorem{exercise}{Exercise}
+\usepackage[normalem]{ulem}
 
 % set font encoding for PDFLaTeX, XeLaTeX, or LuaTeX
 \usepackage{ifxetex,ifluatex}
@@ -43,7 +49,7 @@
 
 
 
-\title{(-1,n)-cores, two cores, checkboard colouring, partitions with distinct parts}
+\title{(-1,n)-cores, two cores, checkerboard colouring, partitions with distinct parts}
 
 % Enable SageTeX to run SageMath code right inside this LaTeX file.
 % http://doc.sagemath.org/html/en/tutorial/sagetex.html
@@ -63,24 +69,25 @@ Recall that the rank rk of a partition is the largest part minus the number of p
 This first one I know is "morally right" but I wrote it up quickly without checking details, so there might be something wrong as written; it wasn't part of our discussion on the 22nd but is a good one to do.
 
 \begin{exercise}
-Let $n$ be odd.  Show that $\lambda$ is a $(-1,n)$-core if and only if $\lambda$ has distinct parts and $\textrm{rk}(\lambda)<n-1$.  
+\sout{Let $n$ be odd.} {\color{red} Helena noticed the hypothesis that $n$ is odd is completley unnecessary here, though later on things will behave differently for odd/even}  Show that $\lambda$ is a $(-1,n)$-core if and only if $\lambda$ has distinct parts and $\textrm{rk}(\lambda)<n-1$.  
 \end{exercise}
 
-\begin{question}
-Is there a similar criterion for $(-1,n)$-cores if $n$ is even?  (I think there probably is, I just haven't thought about it).  
+
+\begin{question} {\color{red} There is!  See the previous question!}
+Is there a similar criterion for $(-1,n)$-cores if $n$ is even?  (I think there probably is, I just haven't thought about it). \textbf{}
 \end{question}
 
 More generally, it feels like $(1,n)$ cores and $(-1,n)$ cores have slightly simpler ways to see them that their definitions; is there something similar for general $(k,n)$-cores?
 
 
-Now, the first exercise together with iterated Dyson maps allows to find a generating function for $(-1,n)$ cores when $n$ is odd:
+Now, the first exercise together with iterated Dyson maps allows to find a generating function for $(-1,n)$ cores when $n$ is odd.  {\color{red} For the case when $n$ is even, see the new exercise at the end!}
 
 \begin{exercise}
 If $n=2k+1$ is odd, prove that
 $$\sum_{\lambda \textrm{(-1,n)-core}} q^{|\lambda|}=\prod_{m=1}^k \frac{1}{1-q^{2m-1}}$$
 \end{exercise}
 
-As a hint, another way to state this approach is taht if we restrict the iterated Dyson bijection between partitions with odd parts and those with distinct parts and to odd parts of size less than $(2n+1)$, then we get exactly (-1,2n+1)-cores.
+As a hint, another way to state this approach is that if we restrict the iterated Dyson bijection between partitions with odd parts and those with distinct parts and to odd parts of size less than $(2n+1)$, then we get exactly (-1,2n+1)-cores.
 
 \section{Recalling the generating function for triangular numbers}
 Earlier we showed that the 2-core partitions are exactly the staircase partitions, and hence we can write their generating function as:
@@ -140,7 +147,13 @@ Observe that if we use Dyson's map to add an even number of boxes, we add an equ
 
 $$\sum_{\lambda \textrm{ distinct}} q_0^{|\lambda|_0}q_1^{|\lambda|_1}$$
 
+\begin{exercise} {\color{red} New!} Again, using Dyson's map with even parts, prove that the generating function for $(-1,n)$ cores when $n=2k$ is even is
 
+$$\sum_{\lambda \text{ (-1,n)-core}}q^{|\lambda|} =\prod_{\ell=1}^{k-1}\frac{1}{1-q^{2\ell}} \prod_{m=1}^\infty \frac{(1-q^{2m})^2}{1-q^m}$$ 
+
+Furthermore, combine this result with the previous exercise to find a product formula for
+$$\sum_{\lambda \text{ (-1,n)-core}}q_0^{|\lambda|_0}q_1^{|\lambda|_1}$$
+\end{exercise}
 
 
 
